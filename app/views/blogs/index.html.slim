@@ -1,0 +1,28 @@
+h1 Listing blogs
+
+table
+  thead
+    tr
+      th Title
+      th Rate
+      th
+      th
+      th
+
+  tbody
+    - @blogs.each do |blog|
+
+      tr
+        td = blog.title
+        td
+         = blog.rate
+         | <div id="star-#{blog.id}">
+        = render "star_js", blog: blog, score_name: "",
+                                    readonly_flug: true, tag: "#star-#{blog.id}"
+        td = link_to 'Show', blog
+        td = link_to 'Edit', edit_blog_path(blog)
+        td = link_to 'Destroy', blog, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Blog', new_blog_path

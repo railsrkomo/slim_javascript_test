@@ -1,0 +1,19 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @blog.title
+p
+  strong Rate:
+  = @blog.rate
+
+  = @blog.id
+
+div id="star-#{@blog.id}"
+  = render "star_js", blog: @blog, score_name: "",
+                      readonly_flug: true, tag: "#star-#{@blog.id}"
+
+=> link_to 'Edit', edit_blog_path(@blog)
+'|
+=< link_to 'Back', blogs_path
+
